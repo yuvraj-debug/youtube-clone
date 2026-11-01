@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube</title>
+    <link rel="icon" href="https://www.youtube.com/s/desktop/f71fa088/img/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-theme">
+    <!-- Top Masthead Header -->
+    <header class="yt-header" id="masthead">
+        <div class="header-start">
+            <button class="yt-icon-button" id="guideBtn" title="Guide" aria-label="Guide">
+                <svg viewBox="0 0 24 24" class="yt-svg" focusable="false">
+                    <path d="M21 6H3V5h18v1zm0 5H3v1h18v-1zm0 6H3v1h18v-1z"></path>
+                </svg>
+            </button>
+            <a href="#" class="yt-logo" id="homeLogo" title="YouTube Home">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" class="yt-svg logo-svg" focusable="false">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" fill="#FF0000"></path>
+                    </svg>
+                </div>
+                <span class="logo-text">YouTube</span>
+                <span class="country-code">IN</span>
+            </a>
+        </div>
+
+        <div class="header-center">
+            <div class="search-box-wrapper">
+                <form class="search-form" id="searchForm">
+                    <div class="search-input-container">
+                        <input type="text" id="searchInput" placeholder="Search" autocomplete="off" spellcheck="false">
+                        <button type="button" class="clear-search-btn" id="clearSearchBtn" title="Clear search query" style="display: none;">
+                            <svg viewBox="0 0 24 24" class="yt-svg" focusable="false">
+                                <path d="M12.7 12l6.6 6.6-.7.7-6.6-6.6-6.6 6.6-.7-.7 6.6-6.6-6.6-6.6.7-.7 6.6 6.6 6.6-6.6.7.7-6.6 6.6z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <button type="submit" class="search-submit-btn" id="searchSubmitBtn" title="Search">
+                        <svg viewBox="0 0 24 24" class="yt-svg" focusable="false">
+                            <path d="M20.87 20.17l-5.59-5.59A7.95 7.95 0 0 0 17 10a8 8 0 1 0-8 8 7.95 7.95 0 0 0 4.58-1.72l5.59 5.59.7-.7zM10 17a7 7 0 1 1 0-14 7 7 0 0 1 0 14z"></path>
+                        </svg>
+                    </button>
+                </form>
+
+                <!-- Search Suggestions Popup -->
+                <div class="search-suggestions" id="searchSuggestions" style="display: none;"></div>
+            </div>
+
+            <button class="yt-icon-button voice-search-btn" id="voiceSearchBtn" title="Search with your voice">
+                <svg viewBox="0 0 24 24" class="yt-svg" focusable="false">
+                    <path d="M12 3c-1.66 0-3 1.37-3 3.07v5.86c0 1.7 1.34 3.07 3 3.07s3-1.37 3-3.07V6.07C15 4.37 13.66 3 12 3zm6.5 6h-1c0 3.03-2.47 5.5-5.5 5.5S6.5 12.03 6.5 9h-1c0 3.25 2.45 5.92 5.5 6.42V20H8v1h8v-1h-3v-4.58c3.05-.5 5.5-3.17 5.5-6.42z"></path>
+                </svg>
+            </button>
+        </div>
+
+        <div class="header-end">
+            <button class="yt-icon-button" id="createBtn" title="Create">
+                <svg viewBox="0 0 24 24" class="yt-svg" focusable="false">
+                    <path d="M14 13h-3v3H9v-3H6v-2h3V8h2v3h3v2zm3-7H3v12h14v-4.5l4 4v-11l-4 4V6m1-1v4.83l4-4v12.34l-4-4V19H2V5h16z"></path>
+                </svg>
+            </button>
+            <div class="notification-wrapper">
+                <button class="yt-icon-button" id="notificationsBtn" title="Notifications">
+                    <svg viewBox="0 0 24 24" class="yt-svg" focusable="false">
+                        <path d="M10 20h4c0 1.1-.9 2-2 2s-2-.9-2-2zm10-7.5V11c0-3.55-1.9-6.52-5.22-7.34C14.54 3.28 14.12 3 13.5 3h-3c-.62 0-1.04.28-1.28.66C5.9 4.48 4 7.45 4 11v1.5L2 15v2h20v-2l-2-2.5zm-1 2.5H5v-5c0-3.07 1.63-5.64 4.5-6.32V4.5c0-.28.22-.5.5-.5h4c.28 0 .5.22.5.5v.18C17.37 5.86 19 8.43 19 11.5v5z"></path>
+                    </svg>
+                    <span class="notification-badge">9+</span>
+                </button>
+                <!-- Notifications Dropdown -->
+                <div class="notifications-panel" id="notificationsPanel" style="display: none;">
+                    <div class="notifications-header">
+                        <span>Notifications</span>
+                        <button class="yt-icon-button small"><svg viewBox="0 0 24 24" class="yt-svg"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg></button>
+                    </div>
+                    <div class="notifications-list" id="notificationsList"></div>
+                </div>
+            </div>
+
+            <div class="user-menu-wrapper">
+                <button class="user-avatar-btn" id="userMenuBtn" title="Account profile">
+                    <div class="avatar-letter">Y</div>
+                </button>
+                <!-- Account / Settings Dropdown -->
+                <div class="user-dropdown-panel" id="userDropdownPanel" style="display: none;">
+                    <div class="user-panel-header">
+                        <div class="avatar-letter large">Y</div>
+                        <div class="user-info">
+                            <span class="user-name">Yuvraj</span>
+                            <span class="user-handle">@yuvraj-developer</span>
+                            <a href="#" class="view-channel-link">View your channel</a>
+                        </div>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-item" id="themeToggleBtn">
+                        <svg viewBox="0 0 24 24" class="yt-svg"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-3.03 0-5.5-2.47-5.5-5.5 0-1.82.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg>
+                        <span>Appearance: <strong id="currentThemeLabel">Dark</strong></span>
+                    </div>
+                    <div class="dropdown-item">
+                        <svg viewBox="0 0 24 24" class="yt-svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                        <span>Location: India</span>
+                    </div>
+                    <div class="dropdown-item">
+                        <svg viewBox="0 0 24 24" class="yt-svg"><path d="M12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5zm7.43-2.53c.04-.32.07-.64.07-.97 0-.33-.03-.66-.07-1l2.11-1.63c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.31-.61-.22l-2.49 1c-.52-.39-1.06-.73-1.69-.98l-.37-2.65c-.04-.24-.25-.42-.5-.42h-4c-.25 0-.46.18-.5.42l-.37 2.65c-.63.25-1.17.59-1.69.98l-2.49-1c-.22-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.63c-.04.34-.07.67-.07 1 0 .33.03.65.07.97l-2.11 1.66c-.19.15-.25.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1.01c.52.4 1.06.74 1.69.99l.37 2.65c.04.24.25.42.5.42h4c.25 0 .46-.18.5-.42l.37-2.65c.63-.26 1.17-.59 1.69-.99l2.49 1.01c.22.08.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.66z"/></svg>
+                        <span>Settings</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Workspace Container -->
+    <div class="yt-container" id="appContainer">
+        <!-- Sidebar Navigation Drawer -->
+        <aside class="yt-sidebar" id="sidebar">
+            <div class="sidebar-scrollable">
+                <!-- Section 1: Main -->
+                <div class="sidebar-section">
+                    <a href="#" class="sidebar-item active" data-nav="home">
+                        <svg viewBox="0 0 24 24" class="yt-svg"><path d="M4 21V10.08l8-6.96 8 6.96V21h-6v-6h-4v6H4z"/></svg>
+                        <span class="sidebar-item-label">Home</span>
+                    </a>
+                    <a href="#" class="sidebar-item" data-nav="shorts">
+                        <svg viewBox="0 0 24 24" class="yt-svg"><path d="M17.77 10.32l-1.2-.5L18 9.06c1.84-.96 2.53-3.23 1.56-5.06s-3.24-2.53-5.07-1.56L6 6.94c-1.29.68-2.07 2.04-2 3.49.07 1.42.93 2.67 2.22 3.25.03.01 1.2.5 1.2.5L6 14.93c-1.83.97-2.53 3.24-1.56 5.07.97 1.83 3.24 2.53 5.07 1.56l8.5-4.5c1.29-.68 2.06-2.04 1.99-3.49-.07-1.42-.94-2.68-2.23-3.25zM10 14.5v-5l4.5 2.5-4.5 2.5z"/></svg>
+                        <span class="sidebar-item-label">Shorts</span>
+                    </a>
+                    <a href="#" class="sidebar-item" data-nav="subscriptions">
+                        <svg viewBox="0 0 24 24" class="yt-svg"><path d="M20 7H4V6h16v1zm2 2H2v11h20V9zM3 19V10h18v9H3zm15-15H6V3h12v1zm-8 13.5l6-4-6-4v8z"/></svg>
+                        <span class="sidebar-item-label">Subscriptions</span>
+                    </a>
+                </div>
+
+                <div class="sidebar-divider"></div>
+
+                <!-- Section 2: You (Library) -->
+                <div class="sidebar-section">
+                    <div class="sidebar-header-link">
+                        <span>You</span>
+                        <svg viewBox="0 0 24 24" class="yt-svg small"><path d="M9.4 18.4l-.7-.7 5.6-5.6-5.6-5.6.7-.7 6.4 6.4-6.4 6.2z"/></svg>
+                    </div>
+                    <a href="#" class="sidebar-item" data-nav="history">
+                        <svg viewBox="0 0 24 24" class="yt-svg"><path d="M11.9 3.75c-4.55 0-8.23 3.7-8.23 8.25H.92l3.57 4.25 3.62-4.25H5.38c0-3.6 2.92-6.55 6.52-6.55 3.6 0 6.52 2.95 6.52 6.55 0 3.6-2.92 6.55-6.52 6.55-1.54 0-2.95-.53-4.07-1.42l-1.2 1.2c1.47 1.18 3.3 1.92 5.27 1.92 4.55 0 8.23-3.7 8.23-8.25s-3.68-8.25-8.23-8.25zm-.15 4v4.5l3.85 2.3.75-1.23-3.1-1.85V7.75h-1.5z"/></svg>
+                        <span class="sidebar-item-label">History</span>
+                    </a>
+                    <a href="#" class="sidebar-item" data-nav="playlists">
+                        <svg viewBox="0 0 24 24" class="yt-svg"><path d="M22 7H2v1h20V7zm-9 5H2v-1h11v1zm0 4H2v-1h11v1zm2 3v-8l7 4-7 4z"/></svg>
+                        <span class="sidebar-item-label">Playlists</span>
+                    </a>
+                    <a href="#" class="sidebar-item" data-nav="watch-later">
+                        <svg viewBox="0 0 24 24" class="yt-svg"><path d="M14.97 16.95L10 13.87V7h2v5.76l4.03 2.49-1.06 1.7zM12 3c-4.96 0-9 4.04-9 9s4.04 9 9 9 9-4.04 9-9-4.04-9-9-9m0-1c5.52 0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2z"/></svg>
+                        <span class="sidebar-item-label">Watch Later</span>
+                    </a>
+                    <a href="#" class="sidebar-item" data-nav="liked">
+                        <svg viewBox="0 0 24 24" class="yt-svg"><path d="M18.77 11h-4.23l1.52-4.94C16.38 5.03 15.54 4 14.38 4c-.58 0-1.14.24-1.52.65L7 11H3v10h4l1 1h11c1.48 0 2.73-1.08 2.96-2.54l1.24-8.02A3.003 3.003 0 0 0 18.77 11zM7 20H4v-8h3v8zm13.18-8.68l-1.24 8.02c-.11.69-.7 1.22-1.4 1.22H8.44l-.7-.7V11.5l5.06-5.46c.19-.21.46-.33.74-.33.58 0 1.05.52.88 1.1l-1.74 5.69h-.98l.58 2.5h6.47c.69 0 1.28.53 1.4 1.22z"/></svg>
+                        <span class="sidebar-item-label">Liked videos</span>
+                    </a>
+                </div>
+
+                <div class="sidebar-divider"></div>
+
+                <!-- Section 3: Subscriptions -->
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Subscriptions</div>
+                    <div class="subscription-item" data-channel="freeCodeCamp">
+                        <img src="https://yt3.ggpht.com/ytc/AIdro_lGRc-05M2OoE1ejQdxeFhyP7OkJg9h4Y-7CK_5je3QqFI=s88-c-k-c0x00ffffff-no-rj" alt="freeCodeCamp" class="sub-avatar">
+                        <span class="sidebar-item-label">freeCodeCamp.org</span>
+                        <div class="live-indicator-dot"></div>
+                    </div>
+                    <div class="subscription-item" data-channel="Fireship">
+                        <img src="https://yt3.ggpht.com/ytc/AIdro_k62JqL3z0oJ7Ua2Q3L_mI-s9o2=s88-c-k-c0x00ffffff-no-rj" onerror="this.src='https://picsum.photos/seed/fireship/88/88'" alt="Fireship" class="sub-avatar">
+                        <span class="sidebar-item-label">Fireship</span>
+                    </div>
+                    <div class="subscription-item" data-channel="Veritasium">
+                        <img src="https://yt3.ggpht.com/ytc/AIdro_mQ1kL9m8N7=s88-c-k-c0x00ffffff-no-rj" onerror="this.src='https://picsum.photos/seed/veritasium/88/88'" alt="Veritasium" class="sub-avatar">
+                        <span class="sidebar-item-label">Veritasium</span>
+                    </div>
+                    <div class="subscription-item" data-channel="Marques Brownlee">
+                        <img src="https://yt3.ggpht.com/ytc/AIdro_mkbhd=s88-c-k-c0x00ffffff-no-rj" onerror="this.src='https://picsum.photos/seed/mkbhd/88/88'" alt="MKBHD" class="sub-avatar">
+                        <span class="sidebar-item-label">Marques Brownlee</span>
+                    </div>
+                    <div class="subscription-item" data-channel="Traversy Media">
+                        <img src="https://yt3.ggpht.com/ytc/AIdro_traversy=s88-c-k-c0x00ffffff-no-rj" onerror="this.src='https://picsum.photos/seed/traversy/88/88'" alt="Traversy Media" class="sub-avatar">
+                        <span class="sidebar-item-label">Traversy Media</span>
+                    </div>
+                </div>
+
+                <div class="sidebar-divider"></div>
+
+                <!-- Section 4: Explore -->
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">Explore</div>
+                    <a href="#" class="sidebar-item">
+                        <svg viewBox="0 0 24 24" class="yt-svg"><path d="M17.53 11.2c-.23-.3-.49-.57-.76-.82-.72-.65-1.57-1.12-2.52-1.37-.5-.13-1.03-.2-1.56-.2-.31 0-.62.03-.92.08-.85.15-1.63.49-2.3 1-.72.54-1.28 1.25-1.65 2.06-.37.81-.51 1.7-.42 2.6.09.9.41 1.74.95 2.45.54.71 1.25 1.25 2.07 1.59.82.34 1.71.45 2.6.33.89-.12 1.72-.48 2.41-1.04.69-.56 1.2-1.29 1.49-2.12.29-.83.33-1.72.12-2.59-.21-.87-.69-1.64-1.38-2.23l1.87-1.87zM12 18c-2.21 0-4-1.79-4-4 0-.74.2-1.43.56-2.02l5.46 5.46c-.59.36-1.28.56-2.02.56zm3.44-1.98L9.98 10.56C10.57 10.2 11.26 10 12 10c2.21 0 4 1.79 4 4 0 .74-.2 1.43-.56 2.02z"/></svg>
+                        <span class="sidebar-item-label">Trending</span>
+                    </a>
+                    <a href="#" class="sidebar-item">
+                        <svg viewBox="0 0 24 24" class="yt-svg"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+                        <span class="sidebar-item-label">Music</span>
+                    </a>
+                    <a href="#" class="sidebar-item">
+                        <svg viewBox="0 0 24 24" class="yt-svg"><path d="M14.97 16.95L10 13.87V7h2v5.76l4.03 2.49-1.06 1.7zM12 3c-4.96 0-9 4.04-9 9s4.04 9 9 9 9-4.04 9-9-4.04-9-9-9m0-1c5.52 0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2z"/></svg>
+                        <span class="sidebar-item-label">Gaming</span>
+                    </a>
+                    <a href="#" class="sidebar-item">
+                        <svg viewBox="0 0 24 24" class="yt-svg"><path d="M12 10.9c-.61 0-1.1.49-1.1 1.1s.49 1.1 1.1 1.1c.61 0 1.1-.49 1.1-1.1s-.49-1.1-1.1-1.1zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm2.19 12.19L6 18l3.81-8.19L18 6l-3.81 8.19z"/></svg>
+                        <span class="sidebar-item-label">News</span>
+                    </a>
+                    <a href="#" class="sidebar-item">
+                        <svg viewBox="0 0 24 24" class="yt-svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-5.5-2.5l7.51-3.49L17.5 6.5 9.99 9.99 6.5 17.5zm5.5-6.6c.61 0 1.1.49 1.1 1.1s-.49 1.1-1.1 1.1-1.1-.49-1.1-1.1.49-1.1 1.1-1.1z"/></svg>
+                        <span class="sidebar-item-label">Podcasts</span>
+                    </a>
+                </div>
+
+                <div class="sidebar-divider"></div>
+
+                <!-- Footer Copyright & Info -->
+                <div class="sidebar-footer">
+                    <div class="footer-links">
+                        <a href="#">About</a> <a href="#">Press</a> <a href="#">Copyright</a>
+                        <a href="#">Contact us</a> <a href="#">Creators</a> <a href="#">Advertise</a>
+                        <a href="#">Developers</a>
+                    </div>
+                    <div class="footer-links">
+                        <a href="#">Terms</a> <a href="#">Privacy</a> <a href="#">Policy & Safety</a>
+                        <a href="#">How YouTube works</a> <a href="#">Test new features</a>
+                    </div>
+                    <div class="footer-copyright">
+                        © 2026 Google LLC
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mini Rail Mode Sidebar (when collapsed on desktop) -->
+            <div class="sidebar-mini-rail">
+                <a href="#" class="mini-rail-item active" data-nav="home">
+                    <svg viewBox="0 0 24 24" class="yt-svg"><path d="M4 21V10.08l8-6.96 8 6.96V21h-6v-6h-4v6H4z"/></svg>
+                    <span>Home</span>
+                </a>
+                <a href="#" class="mini-rail-item" data-nav="shorts">
+                    <svg viewBox="0 0 24 24" class="yt-svg"><path d="M17.77 10.32l-1.2-.5L18 9.06c1.84-.96 2.53-3.23 1.56-5.06s-3.24-2.53-5.07-1.56L6 6.94c-1.29.68-2.07 2.04-2 3.49.07 1.42.93 2.67 2.22 3.25.03.01 1.2.5 1.2.5L6 14.93c-1.83.97-2.53 3.24-1.56 5.07.97 1.83 3.24 2.53 5.07 1.56l8.5-4.5c1.29-.68 2.06-2.04 1.99-3.49-.07-1.42-.94-2.68-2.23-3.25zM10 14.5v-5l4.5 2.5-4.5 2.5z"/></svg>
+                    <span>Shorts</span>
+                </a>
+                <a href="#" class="mini-rail-item" data-nav="subscriptions">
+                    <svg viewBox="0 0 24 24" class="yt-svg"><path d="M20 7H4V6h16v1zm2 2H2v11h20V9zM3 19V10h18v9H3zm15-15H6V3h12v1zm-8 13.5l6-4-6-4v8z"/></svg>
+                    <span>Subscriptions</span>
+                </a>
+                <a href="#" class="mini-rail-item" data-nav="you">
+                    <svg viewBox="0 0 24 24" class="yt-svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+                    <span>You</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="yt-main" id="mainContent">
+            <!-- Browse View (Home Feed) -->
+            <div class="browse-view" id="browseView">
+                <!-- Filter Chips Carousel Bar -->
+                <div class="filter-chips-container" id="chipsBar">
+                    <button class="chips-scroll-btn left" id="chipsScrollLeft" style="display: none;">
+                        <svg viewBox="0 0 24 24" class="yt-svg"><path d="M14.6 18.4L8.2 12l6.4-6.4.7.7L9.6 12l5.7 5.7-.7.7z"/></svg>
+                    </button>
+                    <div class="chips-scroll-area" id="chipsScrollArea">
+                        <button class="yt-chip active" data-category="All">All</button>
+                        <button class="yt-chip" data-category="Gaming">Gaming</button>
+                        <button class="yt-chip" data-category="JavaScript">JavaScript</button>
+                        <button class="yt-chip" data-category="Music">Music</button>
+                        <button class="yt-chip" data-category="Computer programming">Computer programming</button>
+                        <button class="yt-chip" data-category="Podcasts">Podcasts</button>
+                        <button class="yt-chip" data-category="Live">Live</button>
+                        <button class="yt-chip" data-category="Artificial Intelligence">Artificial Intelligence</button>
+                        <button class="yt-chip" data-category="React">React</button>
+                        <button class="yt-chip" data-category="Gadgets">Gadgets</button>
+                        <button class="yt-chip" data-category="Web Development">Web Development</button>
+                        <button class="yt-chip" data-category="Python">Python</button>
+                        <button class="yt-chip" data-category="Science">Science</button>
+                        <button class="yt-chip" data-category="News">News</button>
+                    </div>
+                    <button class="chips-scroll-btn right" id="chipsScrollRight">
+                        <svg viewBox="0 0 24 24" class="yt-svg"><path d="M9.4 18.4l-.7-.7 5.6-5.6-5.6-5.6.7-.7 6.4 6.4-6.4 6.2z"/></svg>
+                    </button>
+                </div>
+
+                <!-- Video Grid Feed -->
+                <div class="video-grid" id="videoGrid"></div>
+
+                <!-- YouTube Shorts Shelf -->
+                <div class="shorts-shelf-container" id="shortsShelf">
+                    <div class="shorts-shelf-header">
+                        <div class="shorts-title-group">
+                            <svg viewBox="0 0 24 24" class="yt-svg shorts-shelf-icon"><path d="M17.77 10.32l-1.2-.5L18 9.06c1.84-.96 2.53-3.23 1.56-5.06s-3.24-2.53-5.07-1.56L6 6.94c-1.29.68-2.07 2.04-2 3.49.07 1.42.93 2.67 2.22 3.25.03.01 1.2.5 1.2.5L6 14.93c-1.83.97-2.53 3.24-1.56 5.07.97 1.83 3.24 2.53 5.07 1.56l8.5-4.5c1.29-.68 2.06-2.04 1.99-3.49-.07-1.42-.94-2.68-2.23-3.25zM10 14.5v-5l4.5 2.5-4.5 2.5z" fill="#FF0000"/></svg>
+                            <h2>Shorts</h2>
+                        </div>
+                    </div>
+                    <div class="shorts-grid" id="shortsGrid"></div>
+                </div>
+
+                <!-- Second Video Grid Batch -->
+                <div class="video-grid secondary-grid" id="videoGridSecondary"></div>
+            </div>
+
+            <!-- Watch View (Video Player & Details Page) -->
+            <div class="watch-view" id="watchView" style="display: none;">
+                <div class="watch-columns">
+                    <!-- Left Primary Column (Video + Info + Comments) -->
+                    <div class="primary-column">
+                        <!-- Video Player Component -->
+                        <div class="player-container" id="playerContainer">
+                            <div class="video-wrapper" id="videoWrapper">
+                                <video id="mainVideoPlayer" preload="auto" playsinline>
+                                    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+                                </video>
+                                <div class="player-overlay" id="playerOverlay">
+                                    <div class="overlay-spinner" id="playerSpinner" style="display: none;"></div>
+                                </div>
+
+                                <!-- Custom YouTube Player Controls -->
+                                <div class="yt-player-controls" id="playerControls">
+                                    <!-- Progress Scrubber Bar -->
+                                    <div class="scrubber-bar-container" id="scrubberContainer">
+                                        <div class="scrubber-hover-preview" id="scrubberHoverPreview" style="display: none;">00:00</div>
+                                        <div class="scrubber-track">
+                                            <div class="scrubber-buffer" id="scrubberBuffer"></div>
+                                            <div class="scrubber-played" id="scrubberPlayed"></div>
+                                            <div class="scrubber-handle" id="scrubberHandle"></div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Bottom Buttons Row -->
+                                    <div class="controls-bottom-row">
+                                        <div class="controls-left">
+                                            <!-- Play / Pause -->
+                                            <button class="player-ctrl-btn" id="playPauseBtn" title="Play (k)">
+                                                <svg viewBox="0 0 24 24" class="yt-svg" id="playIcon"><path d="M8 5v14l11-7z"/></svg>
+                                                <svg viewBox="0 0 24 24" class="yt-svg" id="pauseIcon" style="display: none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                                            </button>
+                                            <!-- Next Video -->
+                                            <button class="player-ctrl-btn" id="nextVideoBtn" title="Next (Shift+N)">
+                                                <svg viewBox="0 0 24 24" class="yt-svg"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+                                            </button>
+                                            <!-- Volume / Mute -->
+                                            <div class="volume-control-group">
+                                                <button class="player-ctrl-btn" id="volumeBtn" title="Mute (m)">
+                                                    <svg viewBox="0 0 24 24" class="yt-svg" id="volumeHighIcon"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                                                    <svg viewBox="0 0 24 24" class="yt-svg" id="volumeMutedIcon" style="display: none;"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+                                                </button>
+                                                <input type="range" class="volume-slider" id="volumeSlider" min="0" max="1" step="0.05" value="1">
+                                            </div>
+                                            <!-- Time Display -->
+                                            <div class="time-display" id="timeDisplay">
+                                                <span id="currentTimeLabel">0:00</span> / <span id="durationLabel">0:00</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="controls-right">
+                                            <!-- Autoplay Toggle -->
+                                            <button class="player-ctrl-btn" id="autoplayBtn" title="Autoplay is on">
+                                                <div class="autoplay-toggle active" id="autoplayToggle">
+                                                    <div class="autoplay-slider"></div>
+                                                </div>
+                                            </button>
+                                            <!-- Subtitles / CC -->
+                                            <button class="player-ctrl-btn" id="ccBtn" title="Subtitles/closed captions (c)">
+                                                <svg viewBox="0 0 24 24" class="yt-svg"><path d="M19 4H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm-8 7H9.5v-.5h-2v3h2V13H11v1a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v1zm7 0h-1.5v-.5h-2v3h2V13H18v1a1 1 0 0 1-1 1h-3a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v1z"/></svg>
+                                            </button>
+                                            <!-- Settings -->
+                                            <button class="player-ctrl-btn" id="playerSettingsBtn" title="Settings">
+                                                <svg viewBox="0 0 24 24" class="yt-svg"><path d="M12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5zm7.43-2.53c.04-.32.07-.64.07-.97 0-.33-.03-.66-.07-1l2.11-1.63c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.31-.61-.22l-2.49 1c-.52-.39-1.06-.73-1.69-.98l-.37-2.65c-.04-.24-.25-.42-.5-.42h-4c-.25 0-.46.18-.5.42l-.37 2.65c-.63.25-1.17.59-1.69.98l-2.49-1c-.22-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.63c-.04.34-.07.67-.07 1 0 .33.03.65.07.97l-2.11 1.66c-.19.15-.25.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1.01c.52.4 1.06.74 1.69.99l.37 2.65c.04.24.25.42.5.42h4c.25 0 .46-.18.5-.42l.37-2.65c.63-.26 1.17-.59 1.69-.99l2.49 1.01c.22.08.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.66z"/></svg>
+                                            </button>
+                                            <!-- Theater Mode -->
+                                            <button class="player-ctrl-btn" id="theaterBtn" title="Theater mode (t)">
+                                                <svg viewBox="0 0 24 24" class="yt-svg"><path d="M19 6H5c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 10H5V8h14v8z"/></svg>
+                                            </button>
+                                            <!-- Fullscreen -->
+                                            <button class="player-ctrl-btn" id="fullscreenBtn" title="Full screen (f)">
+                                                <svg viewBox="0 0 24 24" class="yt-svg"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video Title & Meta Bar -->
+                        <div class="video-headline">
+                            <h1 class="video-main-title" id="watchTitle">Introduction to Programming and Computer Science - Full Course</h1>
+                        </div>
+
+                        <!-- Channel Info & Interaction Action Pills -->
+                        <div class="video-actions-row">
+                            <div class="channel-info-group">
+                                <div class="channel-avatar-wrapper">
+                                    <img src="https://yt3.ggpht.com/ytc/AIdro_lGRc-05M2OoE1ejQdxeFhyP7OkJg9h4Y-7CK_5je3QqFI=s88-c-k-c0x00ffffff-no-rj" alt="Channel" id="watchChannelAvatar" class="watch-channel-avatar">
+                                </div>
+                                <div class="channel-text">
+                                    <div class="channel-name-title">
+                                        <span id="watchChannelName">freeCodeCamp.org</span>
+                                        <svg viewBox="0 0 24 24" class="verified-badge-svg" title="Verified"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zM9.8 17.3l-4.2-4.1 1.4-1.4 2.8 2.7 7.8-7.7 1.4 1.4-9.2 9.1z" fill="currentColor"/></svg>
+                                    </div>
+                                    <span class="subscribers-count" id="watchSubCount">12M subscribers</span>
+                                </div>
+                                <button class="join-pill-btn" id="joinBtn">Join</button>
+                                <button class="subscribe-pill-btn" id="subscribeBtn">Subscribe</button>
+                            </div>
+
+                            <div class="action-buttons-group">
+                                <!-- Like / Dislike Segmented Pill -->
+                                <div class="segmented-pill">
+                                    <button class="pill-btn like-btn" id="likeBtn">
+                                        <svg viewBox="0 0 24 24" class="yt-svg"><path d="M18.77 11h-4.23l1.52-4.94C16.38 5.03 15.54 4 14.38 4c-.58 0-1.14.24-1.52.65L7 11H3v10h4l1 1h11c1.48 0 2.73-1.08 2.96-2.54l1.24-8.02A3.003 3.003 0 0 0 18.77 11zM7 20H4v-8h3v8zm13.18-8.68l-1.24 8.02c-.11.69-.7 1.22-1.4 1.22H8.44l-.7-.7V11.5l5.06-5.46c.19-.21.46-.33.74-.33.58 0 1.05.52.88 1.1l-1.74 5.69h-.98l.58 2.5h6.47c.69 0 1.28.53 1.4 1.22z"/></svg>
+                                        <span id="likeCount">249K</span>
+                                    </button>
+                                    <div class="segmented-divider"></div>
+                                    <button class="pill-btn dislike-btn" id="dislikeBtn" title="Dislike this video">
+                                        <svg viewBox="0 0 24 24" class="yt-svg"><path d="M17 4h-1l-1-1H4c-1.48 0-2.73 1.08-2.96 2.54L-.2 13.56C-.33 14.38-.07 15.2.5 15.82.97 16.33 1.63 16.63 2.33 16.63h4.23l-1.52 4.94c-.26 1.03.58 2.06 1.74 2.06.58 0 1.14-.24 1.52-.65L14 16.63h3V4zm-3 11.23l-4.7 5.07c-.19.21-.46.33-.74.33-.58 0-1.05-.52-.88-1.1l1.74-5.69h.98l-.58-2.5H4.35c-.69 0-1.28-.53-1.4-1.22l1.24-8.02c.11-.69.7-1.22 1.4-1.22H14v13.37zM17 15h3V5h-3v10z" transform="scale(1, -1) translate(0, -24)"/></svg>
+                                    </button>
+                                </div>
+
+                                <!-- Share Button -->
+                                <button class="pill-btn" id="shareBtn">
+                                    <svg viewBox="0 0 24 24" class="yt-svg"><path d="M15 5.63L20.66 12 15 18.37V14h-1c-3.96 0-7.14 1-9.75 3.09 1.84-4.07 5.11-6.4 9.89-7.1l.86-.13V5.63M14 3v6C6.22 10.13 3.11 15.33 2 21c2.78-3.97 6.44-6 12-6v6l8-9-8-9z"/></svg>
+                                    <span>Share</span>
+                                </button>
+
+                                <!-- Download Button -->
+                                <button class="pill-btn" id="downloadBtn">
+                                    <svg viewBox="0 0 24 24" class="yt-svg"><path d="M17 18v1H6v-1h11zm-.5-6.6l-.7-.7-3.8 3.79V4h-1v10.49l-3.8-3.79-.7.7 5 5 5-5z"/></svg>
+                                    <span>Download</span>
+                                </button>
+
+                                <!-- More Actions Button -->
+                                <button class="pill-btn icon-only" id="moreActionsBtn">
+                                    <svg viewBox="0 0 24 24" class="yt-svg"><path d="M7.5 12c0 .83-.67 1.5-1.5 1.5s-1.5-.67-1.5-1.5.67-1.5 1.5-1.5 1.5.67 1.5 1.5zm6 0c0 .83-.67 1.5-1.5 1.5s-1.5-.67-1.5-1.5.67-1.5 1.5-1.5 1.5.67 1.5 1.5zm6 0c0 .83-.67 1.5-1.5 1.5s-1.5-.67-1.5-1.5.67-1.5 1.5-1.5 1.5.67 1.5 1.5z"/></svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Description Box (Expandable) -->
+                        <div class="description-box" id="descriptionBox">
+                            <div class="desc-stats">
+                                <span class="desc-views" id="descViews">11M views</span>
+                                <span class="desc-date" id="descDate">6 years ago</span>
+                                <span class="desc-hashtags">#programming #computerscience #coding</span>
+                            </div>
+                            <div class="desc-text-content" id="descText">
+                                In this comprehensive course, you will learn the fundamental basics of computer programming and computer science. The concepts you learn apply to any and all programming languages and will build a rock-solid foundation for software engineering.
+                                <br><br>
+                                ⭐️ Course Contents ⭐️<br>
+                                ⌨️ (0:00) Introduction to Programming & Algorithms<br>
+                                ⌨️ (12:45) Variables, Memory & Data Types<br>
+                                ⌨️ (28:10) Control Flow, Conditionals & Loops<br>
+                                ⌨️ (45:20) Functions, Scope & Recursion<br>
+                                ⌨️ (1:05:30) Object-Oriented Programming (OOP)<br>
+                                ⌨️ (1:28:15) Data Structures & Complexity (Big-O)<br>
+                                ⌨️ (1:45:00) How Compilers and Interpreters Work
+                            </div>
+                            <button class="desc-expand-btn" id="descToggleBtn">...more</button>
+                        </div>
+
+                        <!-- Interactive Comments Section -->
+                        <div class="comments-section" id="commentsSection">
+                            <div class="comments-header">
+                                <div class="comments-count" id="commentsCountLabel">1,482 Comments</div>
+                                <div class="comments-sort-group">
+                                    <button class="sort-btn" id="sortBtn">
+                                        <svg viewBox="0 0 24 24" class="yt-svg"><path d="M21 6H3V5h18v1zm-6 5H3v1h12v-1zm-6 6H3v1h6v-1z"/></svg>
+                                        <span>Sort by</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Add Comment Input Box -->
+                            <div class="add-comment-box">
+                                <div class="avatar-letter">Y</div>
+                                <div class="comment-input-wrapper">
+                                    <textarea class="comment-textarea" id="commentInput" placeholder="Add a comment..." rows="1"></textarea>
+                                    <div class="comment-action-buttons" id="commentActions" style="display: none;">
+                                        <button class="comment-cancel-btn" id="commentCancelBtn">Cancel</button>
+                                        <button class="comment-submit-btn" id="commentSubmitBtn" disabled>Comment</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Comments Thread List -->
+                            <div class="comments-list" id="commentsList"></div>
+                        </div>
+                    </div>
+
+                    <!-- Right Secondary Column (Related Videos & Mini-chips) -->
+                    <div class="secondary-column">
+                        <div class="related-chips-container">
+                            <button class="yt-chip active">All</button>
+                            <button class="yt-chip">From freeCodeCamp.org</button>
+                            <button class="yt-chip">Related</button>
+                            <button class="yt-chip">Recently uploaded</button>
+                        </div>
+                        <div class="related-videos-list" id="relatedVideosList"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Voice Search Modal -->
+    <div class="modal-backdrop" id="voiceModal" style="display: none;">
+        <div class="voice-modal-content">
+            <div class="voice-modal-header">
+                <h3>Search with your voice</h3>
+                <button class="yt-icon-button" id="closeVoiceModalBtn">
+                    <svg viewBox="0 0 24 24" class="yt-svg"><path d="M12.7 12l6.6 6.6-.7.7-6.6-6.6-6.6 6.6-.7-.7 6.6-6.6-6.6-6.6.7-.7 6.6 6.6 6.6-6.6.7.7-6.6 6.6z"/></svg>
+                </button>
+            </div>
+            <p class="voice-status-text">Listening...</p>
+            <div class="mic-pulse-ring">
+                <button class="voice-mic-active-btn">
+                    <svg viewBox="0 0 24 24" class="yt-svg mic-svg"><path d="M12 3c-1.66 0-3 1.37-3 3.07v5.86c0 1.7 1.34 3.07 3 3.07s3-1.37 3-3.07V6.07C15 4.37 13.66 3 12 3zm6.5 6h-1c0 3.03-2.47 5.5-5.5 5.5S6.5 12.03 6.5 9h-1c0 3.25 2.45 5.92 5.5 6.42V20H8v1h8v-1h-3v-4.58c3.05-.5 5.5-3.17 5.5-6.42z" fill="#ffffff"/></svg>
+                </button>
+            </div>
+            <p class="voice-hint">Say something like "JavaScript tutorial" or "Lo-fi beats"</p>
+        </div>
+    </div>
+
+    <!-- Share Modal -->
+    <div class="modal-backdrop" id="shareModal" style="display: none;">
+        <div class="share-modal-content">
+            <div class="share-modal-header">
+                <h3>Share</h3>
+                <button class="yt-icon-button" id="closeShareModalBtn">
+                    <svg viewBox="0 0 24 24" class="yt-svg"><path d="M12.7 12l6.6 6.6-.7.7-6.6-6.6-6.6 6.6-.7-.7 6.6-6.6-6.6-6.6.7-.7 6.6 6.6 6.6-6.6.7.7-6.6 6.6z"/></svg>
+                </button>
+            </div>
+            <div class="share-social-grid">
+                <div class="share-social-item" data-app="whatsapp">
+                    <div class="social-circle whatsapp">💬</div>
+                    <span>WhatsApp</span>
+                </div>
+                <div class="share-social-item" data-app="facebook">
+                    <div class="social-circle facebook">f</div>
+                    <span>Facebook</span>
+                </div>
+                <div class="share-social-item" data-app="x">
+                    <div class="social-circle x-corp">𝕏</div>
+                    <span>X</span>
+                </div>
+                <div class="share-social-item" data-app="email">
+                    <div class="social-circle email">✉️</div>
+                    <span>Email</span>
+                </div>
+                <div class="share-social-item" data-app="embed">
+                    <div class="social-circle embed">&lt;/&gt;</div>
+                    <span>Embed</span>
+                </div>
+            </div>
+            <div class="share-link-box">
+                <input type="text" class="share-link-input" id="shareLinkInput" readonly value="https://youtu.be/zOjov-2OZ0E">
+                <button class="share-copy-btn" id="copyShareLinkBtn">Copy</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Banner -->
+    <div class="toast-notification" id="toastNotification">
+        <span id="toastMessage">Link copied to clipboard</span>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
